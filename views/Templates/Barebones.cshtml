@@ -1,0 +1,77 @@
+﻿@{ 
+    var siteInfo = ViewBag.SiteInformation as Colectica.Portal.Models.Admin.SiteInformationModel;
+}
+
+<html>
+
+    <head>
+        @Html.Partial("~/Views/Templates/Parts/_CoreStyles.cshtml")
+        @RenderSection("styles", required: false)
+        @Html.RenderResources(PageResourceType.CSS)
+        @RenderSection("headScripts", required: false)
+    </head>
+
+    <body>
+
+        <!-- Sidebar -->
+        <div>
+            @RenderSection("sidebar", required: false)
+
+            @if (IsSectionDefined("sidebarDiv"))
+            {
+                <div class="sidebar-div">
+                    @RenderSection("sidebarDiv", required: false)
+                </div>
+            }
+        </div>
+
+        <!-- Main navigation -->
+        <div style="clear: both;">
+            @await Component.InvokeAsync("MainNavigation")
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <!-- Help -->
+                <li>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span class="glyphicon glyphicon-question-sign"></span>
+                        @LocalizationManager.PortalLocalizer["Help"]
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        @RenderSection("HelpLinksTop", false)
+                        @Html.Partial("~/Views/Templates/Parts/_HelpDropdownContents.cshtml")
+                    </ul>
+                </li>
+
+                <!-- Feedback -->
+                @if (!string.IsNullOrWhiteSpace(siteInfo.FeedbackEmailAddress))
+                {
+                    <li>
+                        <a asp-controller="Feedback" asp-action="Index"><span class="glyphicon glyphicon-bullhorn"></span> @LocalizationManager.PortalLocalizer["Feedback"]</a>
+                    </li>
+                }
+
+                @Html.Partial("~/Views/Templates/Parts/_AuthenticationDropdown.cshtml")
+            </ul>
+        </div>
+
+        <div style="clear: both;">
+            @RenderSection("beforeTitle", required: false)
+            @RenderSection("breadcrumb", required: false)
+        </div>
+
+        <!-- Main content -->
+        <div style="clear: both;">
+            @RenderBody()
+        </div>
+
+        <!-- Scripts and end-of-body content -->
+        @Html.Partial("~/Views/Templates/Parts/_CoreScripts.cshtml")
+        @RenderSection("scripts", required: false)
+        @Html.RenderResources(PageResourceType.JavaScript)
+        @Html.Partial("~/Views/Templates/Parts/_EndBodyContent.cshtml")
+    </body>
+
+</html>

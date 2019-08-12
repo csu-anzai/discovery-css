@@ -1,0 +1,158 @@
+@using Colectica.Portal
+@using Colectica.Portal.Models
+@using Colectica.Portal.Resources
+@using Colectica.Portal.Utility
+@using Colectica.Portal.ViewModels.Account
+@using Colectica.Portal.ViewModels.Manage
+@using Microsoft.Extensions.Options
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Localization
+@inject LocalizationManager LocalizationManager
+
+@{
+    var siteInfo = ViewBag.SiteInformation as Colectica.Portal.Models.Admin.SiteInformationModel;
+}
+
+<html>
+
+    <head>
+        <!-- Site icons -->
+        <link rel="apple-touch-icon" sizes="57x57" href="https://www.closer.ac.uk/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="https://www.closer.ac.uk/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="https://www.closer.ac.uk/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="https://www.closer.ac.uk/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="https://www.closer.ac.uk/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="https://www.closer.ac.uk/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="https://www.closer.ac.uk/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="https://www.closer.ac.uk/apple-touch-icon-152x152.png">
+        <link rel="icon" type="image/png" href="https://www.closer.ac.uk/favicon-196x196.png" sizes="196x196">
+        <link rel="icon" type="image/png" href="https://www.closer.ac.uk/favicon-160x160.png" sizes="160x160">
+        <link rel="icon" type="image/png" href="https://www.closer.ac.uk/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="https://www.closer.ac.uk/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="https://www.closer.ac.uk/favicon-32x32.png" sizes="32x32">
+
+        @Html.Partial("~/Views/Templates/Parts/_CoreStyles.cshtml")
+        @RenderSection("styles", required: false)
+        @Html.RenderResources(PageResourceType.CSS)
+        @RenderSection("headScripts", required: false)
+        <link rel="stylesheet" href="/theme/closer/closer.css">
+        
+        <script type="text/javascript" src="/theme/closer/Snowball.min.js"></script>
+        <!-- Fonts -->
+      	<script type="text/javascript" src="//use.typekit.net/uru0apw.js"></script>
+      	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+    </head>
+
+    <body>
+    <div id="page-wrapper" class="open">
+
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+          @await Component.InvokeAsync("MainNavigation")
+
+          @RenderSection("sidebar", required: false)
+
+          @if (IsSectionDefined("sidebarDiv"))
+          {
+              <div class="sidebar-div">
+                  @RenderSection("sidebarDiv", required: false)
+              </div>
+          }
+
+          <ul class="nav navbar-nav navbar-bottom" id="help-menu">
+
+                          <!-- Help -->
+                          <li class="dropup">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                  <span class="glyphicon glyphicon-question-sign"></span>
+                                  @LocalizationManager.PortalLocalizer["Help"]
+                                  <span class="caret"></span>
+                              </a>
+
+                              <ul class="dropdown-menu dropdown-menu-right">
+                                  @RenderSection("HelpLinksTop", false)
+                                  @Html.Partial("~/Views/Templates/Parts/_HelpDropdownContents.cshtml")
+                              </ul>
+                          </li>
+
+                          <!-- Feedback -->
+                          @if (!string.IsNullOrWhiteSpace(siteInfo.FeedbackEmailAddress))
+                          {
+                              <li>
+                                  <a asp-controller="Feedback" asp-action="Index"><span class="glyphicon glyphicon-bullhorn"></span> @LocalizationManager.PortalLocalizer["Feedback"]</a>
+                              </li>
+                          }
+
+                          @Html.Partial("~/Views/Templates/Parts/_AuthenticationDropdown.cshtml")
+
+          </ul>
+      </div>
+
+      <header id="header" role="banner" class="indent-small underline">
+          <div>
+            <h1 class="site-title img-rep"><a href="/" rel="home">CLOSER</a></h1>
+            <p class="site-description">Promoting excellence in longitudinal research</p>
+          </div>
+
+          <div id="funders" class="well well-sm">
+            <h2 class="sr-only">Funded by</h2>
+
+            <ul>
+              <li id="funder-esrc" class="img-rep">
+                <a href="https://www.esrc.ac.uk/" target="_blank" title="Visit the Economic and Social Research Council website">
+                  <img
+                    title="Visit the Economic and Social Research Council website"
+                    src="https://www.closer.ac.uk/wp-content/uploads/JPG-BW-Large.jpg"
+                    target="_blank"
+                    id="esrc-logo"
+                    style="height: 69px"
+                  />
+                </a>
+              </li>
+              <li id="funder-mrc" class="img-rep">
+                <a href="https://www.mrc.ac.uk/" target="_blank" title="Visit the Medical Research Council website">
+                  <img
+                    title="Visit the Medical Research Council website"
+                    src="https://www.closer.ac.uk/wp-content/uploads/6231.jpg"
+                    target="_blank"
+                    id="mrc-logo"
+                    style="height: 57px; margin-left: 5px"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+
+      </header>
+
+        <div style="clear: both;">
+            @RenderSection("beforeTitle", required: false)
+            @RenderSection("breadcrumb", required: false)
+        </div>
+
+        <!-- Main content -->
+        <div style="clear: both;" id="main-content" class="container-fluid">
+            @RenderBody()
+        </div>
+
+        <!-- Scripts and end-of-body content -->
+        @Html.Partial("~/Views/Templates/Parts/_CoreScripts.cshtml")
+        @RenderSection("scripts", required: false)
+        @Html.RenderResources(PageResourceType.JavaScript)
+        @Html.Partial("~/Views/Templates/Parts/_EndBodyContent.cshtml")
+
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-36206975-2', 'auto');
+          ga('send', 'pageview');
+        </script>
+
+    </body>
+    <script type="text/javascript" src="/theme/closer/closer.js"></script>
+
+</html>
