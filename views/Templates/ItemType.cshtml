@@ -1,0 +1,41 @@
+@model Colectica.Portal.Models.Admin.ItemTypesModel
+
+@using Algenta.Colectica.Model.Utility
+
+
+@{
+    ViewData["Title"] = LocalizationManager.PortalLocalizer["Item Type Configuration"];
+    ViewData["PageHelpUrl"] = "http://docs.colectica.com/portal/admin/item-types/";
+}
+
+@section sidebar
+{
+    @Html.Partial("_AdminNavigation")
+}
+
+
+<div class="row">
+    <div class="col-md-10">
+        @foreach (var group in Model.Groups)
+            {
+            <div class="widget" style="margin-bottom: 20px;">
+                <div class="widget-header">
+                    @group.Name
+                </div>
+                <div class="widget-body">
+                    <ul class="item-type-list list-group row">
+                        @foreach (var itemType in group.ItemTypes)
+                        {
+                            <li class="list-group-item col-xs-3">
+                                <a asp-action="Edit" asp-controller="ItemType" asp-route-id="@itemType.ItemType">
+                                    <img src="/img/types/@itemType.ImageSource" alt="@itemType.DefaultPluralLabel" width="32" height="32" />
+                                    <span>@itemType.DefaultPluralLabel</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        }
+    </div>
+</div>
