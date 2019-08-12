@@ -1,0 +1,34 @@
+﻿@inject Colectica.Portal.Utility.LocalizationManager LocalizationManager
+
+@{ 
+    var siteInfo = ViewBag.SiteInformation as Colectica.Portal.Models.Admin.SiteInformationModel;
+    var helpLinks = siteInfo.GetHelpLinks();
+    bool hasPageHelpUrl = false;
+    string pageHelpUrl = string.Empty;
+    if (ViewData.ContainsKey("PageHelpUrl"))
+    {
+        hasPageHelpUrl = true;
+        pageHelpUrl = ViewData["PageHelpUrl"].ToString();
+    }
+}
+
+@if (hasPageHelpUrl)
+{
+    <li class="link" id="help-for-this-page-link">
+        <a href="@pageHelpUrl" target="_blank">@LocalizationManager.PortalLocalizer["Help for this Page"]</a>
+    </li>
+}
+<li class="link" id="general-help-link">
+    <a href="http://docs.colectica.com/portal" target="_blank">@LocalizationManager.PortalLocalizer["General Help"]</a>
+</li>
+
+@if (helpLinks.Count > 0)
+{
+    <li class="divider"></li>
+    @foreach (var link in helpLinks)
+    {
+        <li class="link">
+            <a href="@link.Item2">@link.Item1</a>
+        </li>
+    }
+}
