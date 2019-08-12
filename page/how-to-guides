@@ -1,0 +1,50 @@
+<div class="row page-title">
+  <div class="meta pull-left">
+    <h1> How-to guides </h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8">
+<p>Our CLOSER Discovery how-to guides provide step-by-step instructions to help users find their way around the search engine.</p>
+
+
+
+
+<h4><a href="https://www.closer.ac.uk/wp-content/uploads/CLOSER-Discovery-how-to-guides-find-varaibles-from-similar-life-stages-across-different-studies.pdf" target="_blank">How do I find variables from similar life stage across different studies?</a></h4>
+<p>This guide explains how researchers can use CLOSER Discovery to search for cross-study cross-sectional data, such as asthma in early childhood across all studies.</p>
+
+<h4><a href="https://www.closer.ac.uk/wp-content/uploads/CLOSER-Discovery-how-to-guides-find-information-about-variable-from-particular-study.pdf" target="_blank">How do I find information about a variable from a particular study?</a></h4>
+<p>This guide shows how to use CLOSER Discovery to explore within-study cross sectional data, for example discover how to find information on the sex of participants in the Millennium Cohort Study.</p>
+
+<h4><a href="https://www.closer.ac.uk/wp-content/uploads/CLOSER-Discovery-how-to-guides-find-how-variable-was-asked-in-original-questionnaire.pdf" target="_blank">How do I find how a variable was asked in the original questionnaire?</a></h4>
+<p>This set of instructions demonstrate how CLOSER Discovery can be used to find information about a source question and the wider questionnaire, for instance search the questions used to measure alcohol intake in the CLOSER studies. </p>
+
+<h4><a href="https://www.closer.ac.uk/wp-content/uploads/CLOSER-Discovery-how-to-guides-compile-and-save-list-of-variables.pdf" target="_blank">How do I compile and save a list of variables?</a></h4>
+<p>These step-by-step instructions explain how users can create and save lists in CLOSER Discovery for example how to compile and export a list of the diabetes-related variables collected by the Southampton Women’s Survey. </p>
+
+
+
+
+  </div>
+  <ul class="nav nav-pills nav-stacked col-sm-offset-1 col-sm-3">
+    <li class="nav-title">Help Menu</li>
+    <li><a href="/page/about/4">About </a></li>
+    <li><a href="/page/faqs/1">Frequently Asked Questions</a></li>
+    <li class="active"><a href="/page/how-to-guides/6">How-to guides</a></li>
+    <li><a href="/page/data-security/3">Data security and intellectual property</a></li>
+    <li><a href="/page/privacy-policy/5">Privacy policy</a></li>
+    <li><a href="https://www.closer.ac.uk/contact/">Contact us</a></li>
+  <ul>
+</div>
+
+<style>
+.widget {
+    margin-top: 20px;
+}
+</style>
+
+
+<p>To find out more about how to use CLOSER Discovery we recommend watching our webinar.</p>
+
+<iframe src="https://www.youtube.com/embed/F-vzi3YlIPQ" width="560" height="315" frameborder="0" allowfullscreen="allowfullscreen"></iframe>
