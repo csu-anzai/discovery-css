@@ -1,0 +1,50 @@
+<div class="row page-title">
+  <div class="meta pull-left">
+    <h1>CLOSER Discovery’s privacy policy</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-8">
+<p>At CLOSER, we are committed to protecting your personal information and being transparent about what we do with it. We comply with the requirements of the General Data Protection Regulations (GDPR) with regard to the collection, processing, storage and disclosure of personal information.</p>
+
+<h4>What does CLOSER Discovery's privacy policy do?</h4>
+<p>Our privacy policy explains how we will use any data that you share with us. We are legally required to tell you how we will use this information and give you the opportunity to tell us not to use your information in that way.</p>
+
+<h4>Who we are</h4>
+<p>References to CLOSER, CLOSER Discovery or to ‘we’ or ‘us’ are to CLOSER (Cohort and Longitudinal Enhancement Resources). CLOSER, based at UCL, is what’s known as the ‘data controller’ of the personal data you provide to us. This data includes your name, email address and organisation etc. </p>
+
+<h4>How your information is stored</h4>
+<p>Your information is stored in a contact database held on a UCL Institute of Education’s System Support Development & Integration (SSD&I) server which is behind a secure firewall. The data are password protected and accessible only to CLOSER and the IOE SSD&I team. All passwords which are created for user accounts are saved as hashed versions, which means they cannot be decoded.  </p>
+
+<p>The accuracy of your information is important to us. If you change your address or believe any of the other information we hold concerning you is out of date, please email <a href="mailto:closer@ucl.ac.uk">closer@ucl.ac.uk.</a></p>
+
+<h4>Information we provide to third parties</h4>
+<p>We do not generally provide any personal information about users of our website to third parties or other users. However, we may disclose your personal information to third parties if we are under a duty to disclose or share your personal data in order to comply with any legal obligation, or in order to enforce or apply our terms of use and other agreements; or to protect the rights, property, or safety of CLOSER, or others.</p>
+
+<p>We will never sell or give your personal information to other organisations.</p>
+
+<h4>Updating information we hold on you</h4>
+<p>As an individual, you have a right under the GDPR to update or amend the information we hold about you, to ask us to remove your personal information from our records and to obtain information from us, including a description of the data that we hold on you. For more information about this please contact UCL’s <a href="mailto:data-protection@ucl.ac.uk">Data Protection Officer.</a></p>
+
+<p>If you would like your account deleted please email <a href="mailto:closer@ucl.ac.uk">closer@ucl.ac.uk.</a></p>
+
+<p>If you would like to complain about our handling of your data, contact UCL’s <a href="mailto:data-protection@ucl.ac.uk">Data Protection Officer.</a></p>
+
+  </div>
+  <ul class="nav nav-pills nav-stacked col-sm-offset-1 col-sm-3">
+    <li class="nav-title">Help Menu</li>
+    <li><a href="/page/about/4">About </a></li>
+    <li><a href="/page/faqs/1">Frequently Asked Questions</a></li>
+    <li><a href="/page/how-to-guides/6">How-to guides</a></li>
+    <li><a href="/page/data-security/3">Data security and intellectual property</a></li>
+    <li class="active"><a href="/page/privacy-policy/5">Privacy policy</a></li>
+    <li><a href="https://www.closer.ac.uk/contact/">Contact us</a></li>
+  <ul>
+</div>
+
+<style>
+.widget {
+    margin-top: 20px;
+}
+</style>
