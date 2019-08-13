@@ -1,0 +1,111 @@
+@model HomeModel
+@inject IJsonHelper Json;
+
+@{
+    ViewData["Title"] = LocalizationManager.PortalLocalizer["Home"];
+    ViewData["PageHelpUrl"] = "http://docs.colectica.com/portal/home/";
+}
+
+@section styles
+{
+    <link href="~/lib/typeahead.js-bootstrap-css/typeaheadjs.css" rel="stylesheet" />
+}
+
+@section scripts
+{
+    @if (Model.IsSearchEnabled)
+    {
+        <script src="~/lib/typeahead.js/typeahead.bundle.js"></script>
+        <script src="~/js/SearchTypeahead.js"></script>
+
+        <script>
+            initializeTypeahead();
+        </script>
+    }
+}
+
+@section HelpLinksTop
+{
+    <li class="link"><a href="javascript:showHomeTour();">@LocalizationManager.PortalLocalizer["Tour this Page"]</a></li>
+}
+
+@if (Model.IsFirstVisit)
+{
+    <div class="alert alert-info alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p>@LocalizationManager.PortalLocalizer["Welcome. This appears to be your first visit. Click the button below to take a quick tour."]</p>
+
+        <div style="margin-top: 10px;">
+            <a href="javascript:showHomeTour();" class="btn btn-primary">@LocalizationManager.PortalLocalizer["Tour this Page"]</a>
+        </div>
+    </div>
+}
+
+<div class="home">
+@if (!string.IsNullOrWhiteSpace(Model.WelcomeText))
+{
+    <div class="row">
+        <div class="col-md-6">
+	            <div class="widget">
+	                <div class="widget-header">@LocalizationManager.PortalLocalizer["Search"]</div>
+	                <div class="widget-body">
+	                    <form method="get"
+	                          asp-controller="Search"
+	                          asp-action="Index"
+	                          asp-route-typelabel="@Model.SearchTypeLabel">
+	
+	                        @foreach (var itemType in Model.TargetSearchTypes)
+	                        {
+	                            <input type="hidden" name="ItemTypes[]" value="@itemType" />
+	
+	                        }
+	
+				<div class="row">
+					<div class="col-sm-12">
+						<select name="ItemTypes[]" class="form-control">
+							<option value="">All</option>
+							@foreach (var count in Model.ItemCountsByType)
+							{
+								<option value="@count.ItemType">@count.Label</option>
+	                        			}
+						</select>
+					</div>
+					<div class="form-group col-sm-12">
+						<label for="Query" class="sr-only">@LocalizationManager.PortalLocalizer["Search query"]</label>
+						<input type="text"
+						       id="Query"
+						       name="Query"
+						       class="form-control"
+						       placeholder="Search" />
+					</div>
+					<div class="col-sm-8 col-sm-offset-2">
+						<button type="button" class="btn btn-primary" style="width: 100%">
+							<span class="glyphicon glyphicon-search"></span> Search</button>
+					</div>
+				</div>
+	                    </form>
+	                </div>
+	            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="widget">
+                <div class="widget-header">
+                    @LocalizationManager.PortalLocalizer["Welcome"]
+                </div>
+                <div class="widget-body">
+                    @Html.Raw(Model.WelcomeText)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+var itemCounts = @Json.Serialize(Model.ItemCountsByType);
+</script>
+
+@if (!string.IsNullOrWhiteSpace(Model.CustomContent))
+{
+    @Html.Raw(Model.CustomContent)
+}
+</div>
