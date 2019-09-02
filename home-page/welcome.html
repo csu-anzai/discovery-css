@@ -1,0 +1,121 @@
+<script>
+var cleanAllItemSearch = function() {
+  if($('#item-type-to-search').val() == "all")
+  {
+    $('#item-type-to-search').attr("disabled", "disabled");
+  }
+};
+var resetSearchWidget = function() {
+  $('#item-type-to-search').removeAttr("disabled");
+};
+</script>
+<div class="row">
+  <div class="col-md-6">
+    <div class="widget">
+      <div class="widget-header">Search</div>
+      <div class="widget-body">
+        <form method="get" action="/search"  class="form-horizontal" id="home-search-form" onSubmit="cleanAllItemSearch()" onLoad="resetSearchWidget()">
+          <div class="form-group">
+            <label for="item-type-to-search" class="col-sm-3 control-label">Item type</label>
+            <div class="col-sm-9">
+              <select id="item-type-to-search" name="ItemTypes[]" class="form-control">
+							<option value="all">All</option>
+              <option value="4bd6eef6-99df-40e6-9b11-5b8f64e5cb23">Studies</option>
+							<option value="30ea0200-7121-4f01-8d21-a931a182b86d">Sweeps</option>
+							<option value="683889c6-f74b-4d5e-92ed-908c0a42bb2d">Variables</option>
+							<option value="f196cc07-9c99-4725-ad55-5b34f479cf7d">Questionnaires</option>
+							<option value="a51e85bb-6259-4488-8df2-f08cb43485f8">Data Files</option>
+							<option value="a1bb19bd-a24a-4443-8728-a6ad80eb42b8">Questions</option>
+						</select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Studies</label>
+            <div class="col-sm-9">
+              <p class="form-control-static"><a id="study-count" href="#" data-toggle="modal" data-target="#studyselector"></a></p>
+            </div>
+          </div>
+          <div class="modal fade" id="studyselector" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">CLOSER Studies</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+          <!-- /.modal -->
+          <div class="form-group">
+            <label class="col-sm-3 control-label">Life Stages</label>
+            <div class="col-sm-9">
+              <p class="form-control-static"><a id="ls-count" href="#" data-toggle="modal" data-target="#lsselector"></a></p>
+            </div>
+          </div>
+          <div class="modal fade" id="lsselector" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Life Stages</h4>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Query" class="col-sm-3 control-label">Search query</label>
+            <div class="col-sm-9">
+              <input type="text" id="Query" name="Query" class="form-control" placeholder="Search" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-8 col-sm-offset-2">
+              <button class="btn btn-primary" style="width: 100%" type="submit">
+							<span class="glyphicon glyphicon-search"></span> Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="widget">
+      <div class="widget-header">
+        Welcome
+      </div>
+      <div class="widget-body">
+
+        <p>CLOSER Discovery is an online resource that enables researchers to <a href="/search" title="CLOSER Discovery Search">search</a> the data from eight leading UK longitudinal studies. We need your <a href="/page/faqs/1#Feedback" title="feedback">feedback</a> to help us shape this resource to best meet the needs of its users.</p>
+        <p>
+<a href=" /page/about/4" > Read more </a> about CLOSER Discovery or take a look at the 
+<a href="/page/faqs/1" title="Read the Frequently Asked Questions">FAQs</a> or 
+<a href=" /page/how-to-guides/6" > How-to guides </a> to get started.</p>
+        <p>Our studies:
+        </p>
+        <ul style="column-count: 2;column-gap: 20px;-moz-column-count: 2;-moz-column-gap: 20px;-webkit-column-count: 2;-webkit-column-gap: 20px;">
+          <li>Avon Longitudinal Study of Parents and Children</li>
+          <li>1970 British Cohort Study</li>
+          <li>Hertfordshire Cohort Study</li>
+          <li>Millennium Cohort Study</li>
+          <li>1958 National Child Development Study</li>
+          <li>MRC National Survey of Health and Development</li>
+          <li>Southampton Women’s Survey</li>
+          <li>Understanding Society</li>
+        </ul>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</div>
