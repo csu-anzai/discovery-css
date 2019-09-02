@@ -6,17 +6,17 @@ $(document).ready(function() {
 
   $('h4#search-help-label').text('Advanced Searches');
 
-  if ($('#property-external-instrument-location').length) {
-    var link = $('#property-external-instrument-location').find('a').eq(0).prop('href');
-    if (link != undefined && link.toLowerCase().substr(link.length - 4) == '.pdf') {
-      $details_pane = $('#details');
-      $pane_nav = $details_pane.parent().prev();
-      $pane_nav.append('<li role="presentation"><a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab" aria-expanded="false">PDF</a></li>');
-
-      $details_pane.after('<div role="tabpanel" class="tab-pane" id="pdf"><embed src="' + link + '" width="' + $pane_nav.width() +
-        '" height="700" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html"></div>');
-    }
-  }
+//  if ($('#property-external-instrument-location').length) {
+//    var link = $('#property-external-instrument-location').find('a').eq(0).prop('href');
+//    if (link != undefined && link.toLowerCase().substr(link.length - 4) == '.pdf') {
+//      $details_pane = $('#details');
+//      $pane_nav = $details_pane.parent().prev();
+//      $pane_nav.append('<li role="presentation"><a href="#pdf" aria-controls="pdf" role="tab" data-toggle="tab" aria-expanded="false">PDF</a></li>');
+//
+//      $details_pane.after('<div role="tabpanel" class="tab-pane" id="pdf"><embed src="' + link + '" width="' + $pane_nav.width() +
+//        '" height="700" alt="pdf" pluginspage="http://www.adobe.com/products/acrobat/readstep2.html"></div>');
+//      }
+//  }
 
   $('[data-toggle="popover"]').popover({
     html: true,
@@ -31,44 +31,49 @@ $(document).ready(function() {
 
   if (!sessionStorage.getItem('home_study_filter')) {
     var studies = [{
-        "identifier": "uk.cls.bcs70:75fe4705-0c94-4f75-b1e6-ad9c61ffde26:8",
+        "identifier": "uk.cls.bcs70:75fe4705-0c94-4f75-b1e6-ad9c61ffde26",
         "label": "1970 British Cohort Study",
         "checked": true
       },
       {
-        "identifier": "uk.alspac:c6601e78-0f74-446a-a5f1-7c73a1984b4e:17",
+        "identifier": "uk.alspac:c6601e78-0f74-446a-a5f1-7c73a1984b4e",
         "label": "Avon Longitudinal Study of Parents and Children",
         "checked": true
       },
       {
-        "identifier": "uk.mrcleu-uos:d20a56d4-22e8-4d70-99cd-1d3a063073b1:5",
+        "identifier": "uk.mrcleu-uos:d20a56d4-22e8-4d70-99cd-1d3a063073b1",
         "label": "Hertfordshire Cohort Study",
         "checked": true
       },
       {
-        "identifier": "uk.cls.mcs:0d8a7220-c61b-4542-967d-a40cb5aca430:4",
+        "identifier": "uk.cls.mcs:0d8a7220-c61b-4542-967d-a40cb5aca430",
         "label": "Millennium Cohort Study",
         "checked": true
       },
       {
-        "identifier": "uk.cls.ncds:524c8f92-493f-4660-90c4-0aa7ac3d2640:6",
+        "identifier": "uk.cls.ncds:524c8f92-493f-4660-90c4-0aa7ac3d2640",
         "label": "National Child Development Study",
         "checked": true
       },
       {
-        "identifier": "uk.lha:f8d235f7-49e5-4568-905e-7f1646e241eb:7",
+        "identifier": "uk.lha:f8d235f7-49e5-4568-905e-7f1646e241eb",
         "label": "National Survey of Health and Development",
         "checked": true
       },
       {
-        "identifier": "uk.mrcleu-uos:03bdaf2d-f57a-487f-89f9-74150bfc3fad:7",
+        "identifier": "uk.mrcleu-uos:03bdaf2d-f57a-487f-89f9-74150bfc3fad",
         "label": "Southampton Women's Survey",
         "checked": true
       },
       {
-        "identifier": "uk.iser:44a7a09e-4703-498c-96f7-0131b296c917:11",
+        "identifier": "uk.iser:44a7a09e-4703-498c-96f7-0131b296c917",
         "label": "Understanding Society",
         "checked": true
+      },
+	  {
+	    "identifier": "uk.whads:1503038e-c369-4912-a198-85e504c332e7",
+	    "label": "Wirral Child Health and Development Study",
+	    "checked": true
       }
     ];
     sessionStorage.setItem('home_study_filter', JSON.stringify(studies));
